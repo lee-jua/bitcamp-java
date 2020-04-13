@@ -1,33 +1,11 @@
 
 package com.jse.phone;
+import lombok.Data;
 
-
+@Data
 public class Phone {
 private String phoneNumber, name, company;
 
-public String getPhoneNumber() {
-	return phoneNumber;
-}
-
-public void setPhoneNumber(String phoneNumber) {
-	this.phoneNumber = phoneNumber;
-}
-
-public String getName() {
-	return name;
-}
-
-public void setName(String name) {
-	this.name = name;
-}
-
-public String getCompany() {
-	return company;
-}
-
-public void setCompany(String company) {
-	this.company = company;
-}
 
 public String toString() {
 	
@@ -35,6 +13,7 @@ public String toString() {
 }
 
 }
+
  class CellPhone extends Phone{ // 상속관계
 	private boolean portable;
 	private String move;
@@ -90,7 +69,6 @@ class Iphone extends CellPhone{
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return super.toString() + ", search = " + search ;
 	}
 
@@ -111,7 +89,6 @@ class GalaxyNote extends Iphone {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return super.toString() + ", bigSize = " + bigSize ;
 	}
 	

@@ -2,97 +2,130 @@ package com.jse.member;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 public class JoinView extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
+	JButton saveButton, listButton, loginButton;
 	JLabel[] labels;
-	JTextField[] textfields;
-	   JButton[] buttons;
-		JPanel panel;
-		MemberService memberService;
-		JoinView(){
-			memberService = new MemberServiceImpl();
-		}
-	public void execute() {
-		this.setSize(500, 500);
+	JTextField[] textFields;
+	JLabel areaLabel;
+	JTextArea textArea;
+	JPanel panel;
+	MemberService memberService;
+	public JoinView() {
+		memberService = new MemberServiceImpl();
+	}
+	public void open() {
+		
+		this.setSize(600, 600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel = new JPanel();
-		this.setVisible(true);
 		this.add(panel);
-		
+		this.setVisible(true);
 		labels = new JLabel[5];
-		textfields =  new JTextField[5];
-		String[] name = {"이름", "아이디", "비밀번호", "SSR", "추가사항"};
-		for (int i = 0; i <5; i++) {
-			labels[i] = new JLabel(name[i]);
+		textFields = new JTextField[5];
+		textArea = new JTextArea();
+		String[] names = {"이름","아이디","패스워드","SSN","주소"};
+		for(int i=0;i < names.length;i++) {
+			labels[i] = new JLabel(names[i]);
 			panel.add(labels[i]);
-			
-			textfields[i] = new JTextField();
-			panel.add(textfields[i]); 
-		}
-	 
-	 
-		String[] buttonname = {"저장", "취소"};
-		buttons = new JButton[2];
-		for (int i = 0; i < 2; i++) {
-			buttons[i] = new JButton(buttonname[i]);
-			panel.add(buttons[i]);
-		}
-	  
+			textFields[i] = new JTextField();
+			panel.add(textFields[i]);
+		}	
+		areaLabel = new JLabel("검색결과");
+		panel.add(areaLabel);
+		panel.add(textArea);
+		saveButton = new JButton("저장");
+		listButton = new JButton("목록");
+		loginButton = new JButton("로그인");
+		saveButton.addActionListener(this);
+		listButton.addActionListener(this);
+		panel.add(saveButton); 
+		panel.add(listButton);
+		panel.add(loginButton);
+		labels[0].setBounds(40,10,40,40);
+		labels[1].setBounds(40,50,40,40);
+		labels[2].setBounds(40,90,60,40);
+		labels[3].setBounds(40,130,40,40);
+		labels[4].setBounds(40,170,60,40);
+		areaLabel.setBounds(40,210,60,40);
+		textFields[0].setBounds(120,10,200,30);
+		textFields[1].setBounds(120,50,200,30);
+		textFields[2].setBounds(120,90,200,30);
+		textFields[3].setBounds(120,130,280,30);
+		textFields[4].setBounds(120,180,280,30);
+		textArea.setBounds(120,220,280,150);
+		saveButton.setBounds(125,400,80,30);
+		listButton.setBounds(240,400,80,30);
+		loginButton.setBounds(340,400,80,30);
 		
-	   buttons[0].addActionListener(this);
-	   buttons[1].addActionListener(this);
-	   
-
-	   labels[0].setBounds(40,10,40,40);
-	   labels[1].setBounds(40,50,40,40); 
-	   labels[2].setBounds(40,90,60,40); 
-	   labels[3].setBounds(40,130,40,40); 
-	   labels[4].setBounds(40,170,60,40);
-	   textfields[0].setBounds(120,10,200,30);
-	   textfields[1].setBounds(120,50,200,30);
-	   textfields[2].setBounds(120,90,200,30);
-	   textfields[3] .setBounds(120,130,280,30);
-	   textfields[4].setBounds(120,180,280,120);
-	   buttons[0].setBounds(125, 330, 80, 30);
-	   buttons[1].setBounds(240, 330, 80, 30);
-	  
-	   this.setLocationRelativeTo(null);
-	   
-
+		this.setLocationRelativeTo(null);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-	 if(e.getSource() == buttons[0]) { //주소값 비교
-			textfields[0].setText("홍길동,유관순,이순신,심사임당,이도");
-			textfields[1].setText("hong,you,lee,sin,leedo");
-			textfields[2].setText("1,2,3,4,5");
-			textfields[3].setText("930505-1,940505-1,950505-2,960505-2,970505-3");
-		JOptionPane.showMessageDialog(this, String.format("%s / %s / %s / %s / %s", 
-				textfields[0].getText(),
-				textfields[1].getText(),
-				textfields[2].getText(),
-				textfields[3].getText(),
-				textfields[4].getText()));
-		String[] data = String.format("%s / %s / %s / %s / %s", 
-				textfields[0].getText(),
-				textfields[1].getText(),
-				textfields[2].getText(),
-				textfields[3].getText(),
-				textfields[4].getText()).split("/");
-String[] names = data[0].split(",");
-String[] ids = data[1].split(",");
-String[] passwords = data[2].split(",");
-String[] ssrs = data[3].split(",");
-Member[] members = memberService.getMembers();
-	for (int i = 0; i < members.length; i++) {
-			System.out.println(members[i].toString());
+		if(e.getSource() == saveButton) {
+			textFields[0].setText("홍길동,유관순,이순신,신사임당,이도");
+			textFields[1].setText("hong,you,lee,shin,leedo");
+			textFields[2].setText("1,1,1,1,1");
+			textFields[3].setText("900101-1,960101-2,980101-1,011010-4,020606-3");
+			textFields[4].setText("서울,서울,서울,부산,부산");
+			String data = String.format("%s / %s / %s / %s / %s", 
+					textFields[0].getText(),
+					textFields[1].getText(),
+					textFields[2].getText(),
+					textFields[3].getText(),
+					textFields[4].getText());
+			String[] arr = data.split("/");
+			Member[] members = new Member[5];
+			String[] names = arr[0].split(",");
+			String[] userids = arr[1].split(",");
+			String[] passwords = arr[2].split(",");
+			String[] ssns = arr[3].split(",");
+			String[] addrs = arr[4].split(",");
+			for(int i=0;i< 5; i++) {
+				members[i] = new Member();
+				members[i].setName(names[i]);
+				members[i].setUserId(userids[i]);
+				members[i].setPasswd(passwords[i]);
+				members[i].setSsn(ssns[i]);
+				members[i].setAddr(addrs[i]);
+				memberService.add(members[i]);
+			}
+			
+		}else if(e.getSource() == listButton) {
+			JOptionPane.showMessageDialog(this, "클릭 !!");
+			Member[] members = memberService.getMembers();
+			String message = "";
+			for (int i = 0; i < members.length; i++) {
+				message +=(String.format("%s \n", members[i]));
+			}
+			textArea.setText(message);
+			
 		}
-	 }else if(e.getSource() ==  buttons[1]) {
-	 
-	 }
-		 
 		
 	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

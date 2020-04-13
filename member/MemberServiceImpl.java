@@ -19,12 +19,6 @@ public class MemberServiceImpl implements MemberService {
 			members[count]=member;
 			count++;
 		}
-		public int getCount() {
-			return count;
-		}
-		public void setCount(int count) {
-			this.count = count;
-		}
-		
+	
 		
 }
