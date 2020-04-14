@@ -4,7 +4,7 @@ public class GradeServiceImpl implements GradeService {
 	private Grade[] grades;
 	private int count;
 	public GradeServiceImpl() {
-		grades = new Grade[3];
+		grades = new Grade[5];
 		count = 0;
 	}
 	@Override
@@ -22,15 +22,7 @@ public class GradeServiceImpl implements GradeService {
 		count++;
 	
 	}
-	@Override
-	public void setCount(int count) {
-		this.count = count;
-		
-	}
-	@Override
-	public int getCount() {
-		return count;
-	}
+
 	@Override
 	public int totalScore(Grade grade) {
 		return grade.getKorean() + grade.getEnglish() + grade.getMath();
