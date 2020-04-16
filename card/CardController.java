@@ -14,7 +14,7 @@ public class CardController {
 					}
 					break;
 					case 2 : System.out.println("출력");
-					Card[] cards = service.getCards();
+					Card[] cards = service.list();
 					for(int i=0;i<3;i++) {
 						System.out.println(String.format("모양 : %s , 숫자 : %d " , cards[i].getKind(), cards[i].getNumber()));
 					}

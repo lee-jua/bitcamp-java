@@ -7,14 +7,7 @@ public class GradeServiceImpl implements GradeService {
 		grades = new Grade[5];
 		count = 0;
 	}
-	@Override
-	public void setGrades(Grade[] grades) {
-		this.grades = grades;
-	}
-	@Override
-	public Grade[] getGrades() {
-		return grades;
-	}
+
 
 	@Override
 	public void add(Grade grade) { //구상 메소드
@@ -22,15 +15,41 @@ public class GradeServiceImpl implements GradeService {
 		count++;
 	
 	}
+	@Override
+	public Grade[] list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
-	public int totalScore(Grade grade) {
+	public Grade datail(Grade grade) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int total(Grade grade) {
 		return grade.getKorean() + grade.getEnglish() + grade.getMath();
 	}
+
+	@Override
+	public int average(Grade grade) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
+
 	@Override
 	public String record(Grade grade) {
-		int average = totalScore(grade)/3;
+		int average = total(grade)/3;
 		System.out.println("평균 : "+average);
 		String result = "";
 		if(average >=90) {
@@ -49,22 +68,14 @@ public class GradeServiceImpl implements GradeService {
 		return result;
 
 	}
-	@Override
-	public String printGrades() {
-		String result = "";
-		Grade[] grades = getGrades();
-		for(int i=0;i<3;i++) {
-			result += String.format("이름 : %s , 학점 : %s" ,grades[i].getName(),record(grades[i]));
-		}
-		return result;
-	}
+
 	@Override
 	public String ranking() {
 		
-		Grade[] grades = getGrades();
-		int a = totalScore(grades[0]);
-		int b = totalScore(grades[1]);
-		int c = totalScore(grades[2]);
+		Grade[] grades = list();
+		int a = total(grades[0]);
+		int b = total(grades[1]);
+		int c = total(grades[2]);
 		
 		int first;
 		int second;
@@ -105,5 +116,22 @@ public class GradeServiceImpl implements GradeService {
 	}
 	String message = ("1번째 : "+first+"  2번째 : "+second+"  3번째 : "+third);
 	return message;
+	}
+
+
+
+
+
+	@Override
+	public void update(Grade grade) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void delete(Grade grade) {
+		// TODO Auto-generated method stub
+		
 	}
 	}

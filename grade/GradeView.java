@@ -143,7 +143,7 @@ public class GradeView extends JFrame implements ActionListener{
 					 gradeService.add(grades[i]);
 					}
 				}else if(e.getSource()==listButton) {
-					Grade[] grades=gradeService.getGrades();
+					Grade[] grades=gradeService.list();
 					String message = "";
 					for (int i = 0; i < grades.length; i++) {
 						message += String.format("%s \n", grades[i]);

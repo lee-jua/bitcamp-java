@@ -1,26 +1,20 @@
 package com.jse.phone;
 
 public class PhoneServiceImpl implements PhoneService{
-private Phone[] phones; 
-private CellPhone[] cellPhones;
 private Iphone[] iphones;
 private GalaxyNote[] galaxynotes;
+private Phone[] phones;
+private CellPhone[] cellPhones;
 private int count;
 public PhoneServiceImpl() {
-	phones = new Phone[3]; //포함관계 composition
-	cellPhones = new CellPhone[3];
 	iphones = new Iphone[3];
 	galaxynotes = new GalaxyNote[3];
+	phones = new Phone[3];
+	cellPhones = new CellPhone[3];
 	count = 0;
 }
-public void add(Phone phone) { //이름은 같아도 된다 타입이 달라야 한다!! 오버로딩??
-	phones[count] = phone;
-	count++;
-}
-public void add(CellPhone cellPhone) {
-	cellPhones[count] = cellPhone;
-	count++;
-}
+
+
 public void add(Iphone iphone) {
 	iphones[count] = iphone;
 	count++;
@@ -31,38 +25,115 @@ public void add(GalaxyNote galaxynote) {
 	count++;
 }
 
-public void setPhones(Phone[] phones) {
-	this.phones = phones;
-}
-public Phone[] getPhones() {
-	return phones;
-}
-
-public CellPhone[] getCellPhones() {
-	return cellPhones;
-}
-public void setCellPhones(CellPhone[] cellPhones) {
-	this.cellPhones = cellPhones;
+@Override
+public Iphone[] iphonesList() {
+	// TODO Auto-generated method stub
+	return null;
 }
 
-public Iphone[] getIphones() {
-	return iphones;
-}
-public void setIphones(Iphone[] iphones) {
-	this.iphones = iphones;
-}
-public void setCount(int count) {
-	this.count = count;
-}
-public int getCount() {
-	return count;
+
+@Override
+public GalaxyNote[] galaxynotesList() {
+	// TODO Auto-generated method stub
+	return null;
 }
 
-public GalaxyNote[] getGalaxynotes() {
-	return galaxynotes;
+
+@Override
+public Iphone detail(Iphone iphone) {
+	// TODO Auto-generated method stub
+	return null;
 }
-public void setGalaxynotes(GalaxyNote[] galaxynotes) {
-	this.galaxynotes = galaxynotes;
+@Override
+public GalaxyNote detail(GalaxyNote galaxynote) {
+	// TODO Auto-generated method stub
+	return null;
 }
+@Override
+public int count() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+
+@Override
+public void update(Iphone iphone) {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void update(GalaxyNote galaxynote) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void delete(Iphone iphone) {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void delete(GalaxyNote galaxynote) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+@Override
+public void add(Phone phone) {
+	phones[count] = phone;
+	count++;
+}
+
+
+@Override
+public void add(CellPhone cellPhone) {
+	cellPhones[count] = cellPhone;
+	count++;
+}
+
+
+@Override
+public Phone phonesList() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
+@Override
+public CellPhone cellphonesList() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
+@Override
+public void update(Phone phone) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+@Override
+public void update(CellPhone cellPhone) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+@Override
+public void delete(Phone phone) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+@Override
+public void delete(CellPhone cellPhone) {
+	// TODO Auto-generated method stub
+	
+}
+
+
 
 }

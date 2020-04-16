@@ -1,11 +1,14 @@
 package com.jse.grade;
 
 public interface GradeService {
-		public void setGrades(Grade[] grades) ;
-		public Grade[] getGrades();
-		public void add(Grade grade); //추상 메소드
-		public int totalScore(Grade grade);
+	public void add(Grade grade); 
+		public Grade[] list();
+		public Grade datail(Grade grade);
+		public int count();
+		public int total(Grade grade);
+		public int average(Grade grade);
 		public String record(Grade grade);
-		public String printGrades();
-	public String ranking();
+		public String ranking();
+		public void update(Grade grade);
+		public void delete(Grade grade);
 }
